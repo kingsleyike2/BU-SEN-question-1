@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      box-sizing:content-box;
+      overflow: hidden;
+      padding:0;
+       }
+     body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    #about{
+      background-image: url("R.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      height: 100vh; 
+      width: 100%;
+      padding: 2rem;
+       }
+       #about p{
+        color: whitesmoke;
+       }
+       #projects {
+        background-image: url("OIP\ \(1\).jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      height: 100vh; 
+      width: 100%;
+      padding: 2rem;
+       }
+       #contact {
+        background-image: url("OIP\ \(5\).jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100vh; 
+      width: 100%;
+      padding: 2rem;
+      box-sizing: border-box;
+
+       }
+       #contact p{
+        color: #f4f4f4;
+       }
+
+       .project img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+    
+    /* Fullscreen Intro Overlay */
+    #intro-page {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85); /* semi-transparent overlay */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    #intro-text {
+      font-size: 2.5rem;
+      color: white;
+      font-weight: bold;
+      font-family: 'Trebuchet MS', sans-serif;
+      min-height: 3rem;
+      padding: 2rem;
+    }
+
+    #intro-page.hidden {
+      display: none;
+    }
+
+    /* Sidebar */
+    aside {
+      width: 270px;
+      height: 100vh;
+      background-color: #111;
+      color: white;
+      padding: 2rem 1rem;
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+    }
+
+    .profile-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      border: 3px solid #fff;
+      object-fit: cover;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .name {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      animation: pulse 2s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { color: #eee; transform: scale(1); }
+      100% { color: #00bfff; transform: scale(1.05); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    aside nav a {
+      display: block;
+      color: #ccc;
+      text-decoration: none;
+      margin: 1rem 0;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    aside nav a:hover {
+      color: #fff;
+    }
+
+    main {
+  margin-left: 270px;
+  width: calc(100% - 270px);
+  padding: 2rem;
+}
+
+
+    section {
+      display: none;
+      animation: fadeIn 0.7s ease-in-out;
+      min-height: 100vh;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    h2 {
+      color: #00bfff;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    .project-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .project {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 1rem;
+      width: 300px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 500px;
+      gap: 1rem;
+    }
+
+    input, textarea {
+      padding: 0.7rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 0.8rem;
+      background-color: #111;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #333;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #888;
+      font-size: 0.85rem;
+    }
+    #intro-text {
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 4;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  aside {
+    width: 100%;
+    height: auto;
+    position: relative;
+    flex-direction: row;
+    padding: 1rem;
+  }
+
+  main {
+    margin-left: 0;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .project-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project {
+    width: 90%;
+  }
+
+  #intro-text {
+    font-size: 1.5rem;
+    padding: 1rem;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  input, textarea, button {
+    font-size: 1rem;
+  }
+}
+
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Fullscreen Intro Overlay -->
+  <div id="intro-page">
+    <h2 id="intro-text"></h2>
+  </div>
+
+  <!-- Sidebar -->
+  <aside>
+    <div>
+      <img src="d.jpg" alt="My Photo" class="profile-image" />
+      <div class="name">IKE KINGSLEY</div>
+      <nav>
+        <a onclick="showSection('about')">About ME</a>
+        <a onclick="showSection('projects')">Projects</a>
+        <a onclick="showSection('contact')">Contact</a>
+      </nav>
+    </div>
+    <footer>&copy; 2025 IKE KINGSLEY</footer>
+  </aside>
+
+  <!-- Main Content -->
+  <main>
+    <section id="about" class="active">
+      <h2>About Me</h2>
+      
+      <p><em><strong>I’m a web developer passionate about creating beautiful and functional websites using HTML, CSS, JavaScript, and modern frameworks.<br>
+      I study at Babcock University, One of the best Universities in NIGERIA, Currently in 100level, <br>
+    Aspiring to become a big web developer, front end and back end developer</strong></em></p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="project-list">
+        <div class="project">
+          <h3>Landing Page</h3>
+          <img src="OIP (4).jpg" alt="Landing page">
+          <p>Responsive and animated landing page with CTA and scroll effects.</p>
+        </div>
+        <div class="project">
+          <h3>Task Manager</h3>
+          <img src="OIP (2).jpg" alt="Task Manager">
+          <p>A to-do list app with filtering, status toggles, and local storage.</p>
+        </div>
+        <div class="project">
+          <h3>Weather App</h3>
+          <img src="OIP (3).jpg" alt="Weather App">
+          <p>Current weather search using OpenWeather API and styled cards.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <form action="https://formspree.io/f/mwpodabb" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+        <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+      </form>
+      <P>Please endeavour to write your thoughts on the website, i will definetly see it and respond</P>
+      
+    </section>
+  </main>
+
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const text = "Welcome to my personal portfolio,My name is Kingsley Ike and am a web developer.";
+      const introText = document.getElementById("intro-text");
+      let index = 0;
+      
+      function typeEffect() {
+        if (index < text.length) {
+          introText.textContent += text.charAt(index);
+          index++;
+          setTimeout(typeEffect, 80);
+        } else {
+          // After typing, hide intro overlay and go to about section
+          setTimeout(() => {
+            document.getElementById("intro-page").classList.add("hidden");
+            showSection("about");
+          }, 1500);
+        }
+      }
+
+      typeEffect();
+    });
+
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll("main section");
+      sections.forEach(section => section.classList.remove("active"));
+      const activeSection = document.getElementById(sectionId);
+      if (activeSection) {
+        activeSection.classList.add("active");
+      }
+    }
+
+    function submitForm(e) {
+      e.preventDefault();
+      alert("Thank you! Your message has been sent.");
+      return false;
+    }
+  </script>
+
+</body>
+</html>
